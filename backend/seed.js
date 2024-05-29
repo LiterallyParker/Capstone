@@ -10,10 +10,10 @@ async function seedTables(client) {
   try {
 
     await client.query(`
-    DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS purchases;
     DROP TABLE IF EXISTS instruments;
     DROP TABLE IF EXISTS catagories;
-    DROP TABLE IF EXISTS purchases;
+    DROP TABLE IF EXISTS users;
     `);
 
     await client.query(`
