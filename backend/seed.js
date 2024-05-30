@@ -19,10 +19,11 @@ async function seedTables(client) {
     await client.query(`
     CREATE TABLE users(
       id SERIAL PRIMARY KEY,
-      first_name VARCHAR(255),
-      last_name VARCHAR(255),
-      email VARCHAR(255),
-      hash VARCHAR(255)
+      first_name VARCHAR(255) NOT NULL,
+      last_name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      hash VARCHAR(255) NOT NULL,
+      data JSON NOT NULL
     )
     `);
 
@@ -96,40 +97,11 @@ async function seedInstruments(client) {
   }
 }
 
-async function seedUsers(client) {
-  console.log("Seeding Users...");
-
-  try {
-
-    const users = [
-      {
-        "first_name": "parker",
-        "last_name": "townsend",
-        "email": "email@website.com",
-        "hash": await bcrypt.hash('password', 5)
-      }
-    ];
-
-    for (const user of users) {
-      await client.query(
-        `INSERT INTO users (first_name, last_name, email, hash) VALUES ($1, $2, $3, $4)`,
-        [user.first_name, user.last_name, user.email, user.hash]
-      );
-    };
-
-    console.log("Users seeded.\n")
-
-  } catch (error) {
-    console.error(error)
-  }
-}
-
 async function buildDb() {
 
   try {
     client.connect()
     await seedTables(client)
-    await seedUsers(client)
     await seedCatagories(client)
     await seedInstruments(client)
     console.log("You're Doing Good!")
