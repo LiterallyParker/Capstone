@@ -6,7 +6,7 @@ export default function Home({ token, setToken }) {
   useEffect(() => {
     
     console.log(token)
-
+    
   }, [token])
 
   return (
