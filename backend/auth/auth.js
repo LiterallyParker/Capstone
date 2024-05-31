@@ -35,4 +35,4 @@ async function checkForCorrectUser(req, res, next) {
 
 }
 
-module.exports = { checkForCorrectUser, createToken }
+module.exports = { checkForCorrectUser, createToken };

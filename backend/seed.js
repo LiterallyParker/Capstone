@@ -19,8 +19,8 @@ async function seedTables(client) {
     await client.query(`
     CREATE TABLE users(
       id SERIAL PRIMARY KEY,
-      first_name VARCHAR(255) NOT NULL,
-      last_name VARCHAR(255) NOT NULL,
+      firstname VARCHAR(255) NOT NULL,
+      lastname VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
       hash VARCHAR(255) NOT NULL,
       data JSON NOT NULL
@@ -53,7 +53,7 @@ async function seedTables(client) {
       total DECIMAL NOT NULL,
       items JSON NOT NULL
     )
-    `)
+    `);
 
     console.log("Tables Created.\n");
 
@@ -90,7 +90,7 @@ async function seedInstruments(client) {
       );
     };
 
-    console.log("Instruments seeded.\n")
+    console.log("Instruments seeded.\n");
 
   } catch (error) {
     console.error(error);
@@ -98,17 +98,15 @@ async function seedInstruments(client) {
 }
 
 async function buildDb() {
-
   try {
-    client.connect()
-    await seedTables(client)
-    await seedCatagories(client)
-    await seedInstruments(client)
-    console.log("You're Doing Good!")
+    client.connect();
+    await seedTables(client);
+    await seedCatagories(client);
+    await seedInstruments(client);
+    console.log("You're Doing Good!");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-
 }
 
-buildDb().catch(console.error).finally(() => client.end())
+buildDb().catch(console.error).finally(() => client.end());
