@@ -1,8 +1,24 @@
 #root {
+  font-size: 1.2rem;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.NavBar {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 12rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+}
+
+.NavBar button {
+  margin: 0 10px;
 }
 
 .user-form {
@@ -10,18 +26,41 @@
   flex-direction: column;
 }
 
-.user-form-label {
+.user-feild {
   display: flex;
-  width: 20rem;
-  padding: 1rem;
   justify-content: space-between;
+  margin: 0.5rem 0;
+  width: 110%;
 }
 
-.user-form-input {
-  
+.user-error {
+  padding: 0;
+  margin: 0;
+  background-color: red;
+  color: white;
+  margin: 0 4rem;
+  padding: 3px;
+  border-radius: 10px;
 }
 
-.user-form-button {
+.user-input {
+  display: flex;
+}
+
+.user-button {
   width: 8rem;
   font-size: 0.8rem;
+  margin: 0.2rem 0;
+}
+
+.list-instrument {
+  margin: 4rem;
+}
+
+.list-instrument-image {
+  height: 300px;
+}
+
+.Login {
+  display: none;
 }

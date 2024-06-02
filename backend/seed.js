@@ -42,6 +42,7 @@ async function seedTables(client) {
       price DECIMAL NOT NULL,
       stock INT NOT NULL,
       catagory_id INT REFERENCES catagories(id) NOT NULL,
+      imageurl VARCHAR(255) NOT NULL,
       data JSON NOT NULL
     )
     `);
@@ -85,8 +86,8 @@ async function seedInstruments(client) {
 
     for (const instrument of instruments) {
       await client.query(
-        `INSERT INTO instruments (name, price, stock, catagory_id, data) VALUES ($1, $2, $3, $4, $5)`,
-        [instrument.name, instrument.price, instrument.stock, instrument.catagory_id, instrument.data]
+        `INSERT INTO instruments (name, price, stock, catagory_id, imageurl, data) VALUES ($1, $2, $3, $4, $5, $6)`,
+        [instrument.name, instrument.price, instrument.stock, instrument.catagory_id, instrument.imageURL, instrument.data]
       );
     };
 

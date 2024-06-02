@@ -3,8 +3,7 @@ const router = express.Router();
 
 const auth = require('../auth/auth');
 const dbUsers = require('../db/users');
-
-// router.post('/login', async ());
+const { checkForCorrectUser } = require("../auth/auth");
 
 router.post('/register', async (req, res, next) => {
   

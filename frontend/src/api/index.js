@@ -23,3 +23,19 @@ export async function registerUser(userObject) {
   }
 }
 
+export async function fetchInstruments() {
+  try {
+
+    const response = await fetch(BaseURL + "/instruments", {
+      method: "GET",
+      headers: {
+        "Content-Type":"application/json"
+      }
+    })
+    const result = await response.json();
+    return result.instruments
+
+  } catch (error) {
+    throw new Error(error)
+  }
+}
