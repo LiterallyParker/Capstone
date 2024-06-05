@@ -30,8 +30,7 @@ async function seedTables(client) {
     await client.query(`
     CREATE TABLE catagories(
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      data JSON NOT NULL
+      name VARCHAR(255) NOT NULL
     )
     `);
 
@@ -60,9 +59,9 @@ async function seedTables(client) {
 
   } catch (err) {
     console.log(err);
-  }
+  };
 
-}
+};
 
 async function seedCatagories(client) {
 
@@ -70,14 +69,14 @@ async function seedCatagories(client) {
 
   try {
     for (const catagory of catagories) {
-      await client.query(`INSERT INTO catagories (name, data) VALUES ($1, $2)`,
-        [catagory.name, catagory.data]);
+      await client.query(`INSERT INTO catagories (name) VALUES ($1)`,
+        [catagory.name]);
     }
     console.log("Catagories Seeded.\n");
   } catch (error) {
     console.log(error);
-  }
-}
+  };
+};
 
 async function seedInstruments(client) {
   console.log("Seeding Instruments...");
@@ -95,8 +94,8 @@ async function seedInstruments(client) {
 
   } catch (error) {
     console.error(error);
-  }
-}
+  };
+};
 
 async function buildDb() {
   try {
@@ -107,7 +106,7 @@ async function buildDb() {
     console.log("You're Doing Good!");
   } catch (error) {
     console.log(error);
-  }
-}
+  };
+};
 
 buildDb().catch(console.error).finally(() => client.end());

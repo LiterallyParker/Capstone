@@ -16,6 +16,7 @@ async function getInstrumentRows() {
 }
 
 async function getInstrumentById(id) {
+
   try {
 
     const SQL = `
@@ -30,6 +31,7 @@ async function getInstrumentById(id) {
     console.error(error);
 
   }
+
 }
 
 module.exports = { getInstrumentRows, getInstrumentById };
