@@ -301,7 +301,7 @@ const instruments = [
     "price": 49.99,
     "stock": 20,
     "catagory_id": 7,
-    "imageURL": "https://www.hohner.de/fileadmin/_processed_/4/6/csm_590-20-0_290c25a365.jpg",
+    "imageURL": "",
     "data": {
       "Brand": "Hohner",
       "Material": "Plastic",
@@ -313,7 +313,7 @@ const instruments = [
     "price": 1699.00,
     "stock": 6,
     "catagory_id": 2,
-    "imageURL": "https://images-na.ssl-images-amazon.com/images/I/71WXa4tE5aL._AC_SX466_.jpg",
+    "imageURL": "",
     "data": {
       "Brand": "Hohner",
       "Color": "Black",

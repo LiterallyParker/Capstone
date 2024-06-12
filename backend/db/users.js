@@ -5,12 +5,12 @@ async function createUser(userObject) {
 
   const password = await bcrypt.hash(userObject.password, 7);
   const SQL = `
-  INSERT INTO users (firstname, lastname, email, hash, data) VALUES ($1, $2, $3, $4, $5) returning id
+  INSERT INTO users (firstname, lastname, email, hash) VALUES ($1, $2, $3, $4) returning id
   `;
 
   try {
 
-    const { rows } = await client.query(SQL, [userObject.firstName, userObject.lastName, userObject.email, password, { "wishlist": [], "cart": [] }]);
+    const { rows } = await client.query(SQL, [userObject.firstname, userObject.lastname, userObject.email, password]);
     return {
       ...userObject,
       id: rows[0].id
@@ -22,10 +22,13 @@ async function createUser(userObject) {
 };
 
 async function getUserByEmail(email) {
-  const SQL = `SELECT email from users WHERE email = $1;`;
+  const SQL = `SELECT id, firstname, lastname, email, hash FROM users WHERE email = $1;`;
   try {
     const { rows } = await client.query(SQL, [email]);
-    return rows;
+    if (rows.length) {
+      return rows[0];
+    }
+    return {error:true, message:"No user with that email."}
 
   } catch (error) {
     console.error(error);

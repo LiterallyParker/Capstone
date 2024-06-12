@@ -33,10 +33,10 @@ export default function FeaturedInstrument() {
   }
 
   return (
-    <div>
+    <div className="feature">
       {
         instrument && (
-          <div>
+          <div className="feature-info">
             <div className="main-info">
               <h1>{instrument.name}</h1>
               <img className="feature-image" src={instrument.imageurl} alt={instrument.name} />

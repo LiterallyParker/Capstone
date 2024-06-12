@@ -47,24 +47,21 @@ export default function Register({ token, setToken }) {
     <div className="Register">
       <h2>Register</h2>
       <div className="user-form">
-        <div className="user-feild">First Name:
+        <div className="user-labels">
+          <label className="user-label">First Name:</label>
+          <label className="user-label">Last Name:</label>
+          <label className="user-label">Email:</label>
+          <label className="user-label">Password:</label>
+          <label className="user-label">Confirm Password:</label>
+        </div>
+        <div className="user-inputs">
           <input className="user-input" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-        </div>
-        <div className="user-feild">Last Name:
           <input className="user-input" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-        </div>
-        <div className="user-feild">Email*:
           <input className="user-input" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        </div>
-        <div className="user-feild">Password*:
           <input className="user-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        </div>
-        <div className="user-feild">
-          <div>
-            Confirm Password*:
-          </div>
           <input className="user-input" type="password" value={passCheck} onChange={(e) => setPassCheck(e.target.value)}/>
         </div>
+      </div>
         <div>
           <button className="user-button" onClick={handleSubmit}>Register</button>
         </div>
@@ -73,7 +70,6 @@ export default function Register({ token, setToken }) {
             error && <p className="user-error">{error}</p>
           }
         </div>
-      </div>
     </div>
   );
 };

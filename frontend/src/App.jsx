@@ -1,7 +1,14 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import './App.css'
 
+// CSS
+import './App.css'
+import './css/navbar.css'
+import './css/instruments.css'
+import './css/home.css'
+import './css/login.css'
+import './css/register.css'
+import './css/feature.css'
 // Components
 import Navbar from './components/Navbar'
 
