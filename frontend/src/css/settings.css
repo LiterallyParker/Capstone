@@ -1,0 +1,22 @@
+.setting {
+  width: 25.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fa-arrow-right {
+  margin-left: 5px;
+  padding: 2px 4px;
+  border: 1px solid slategray;
+  border-radius: 10px;
+}
+.fa-arrow-right:hover {
+  cursor: pointer;
+}
+.fa-arrow-right:active {
+  cursor: default;
+}
+.invisible {
+  color: white;
+  border: 1px solid transparent;
+}

@@ -1,38 +1,63 @@
 const jwt = require("jsonwebtoken");
-const key = "paiohuqmetxcpioveqdcvnb";
+const { JWT_SECRET } = process.env;
+const { getUserById } = require("../db/users")
 
 async function createToken(userObject) {
 
   try {
-    const token = await jwt.sign({ userId: userObject.id }, key);
+
+    const token = await jwt.sign({ 
+      id: userObject.id 
+    }, process.env.JWT_SECRET, {
+      expiresIn:"1w"
+    });
+
     return token;
+
   } catch (error) {
+
     console.error(error);
+
   };
 
 };
 
-async function checkForCorrectUser(req, res, next) {
-  const token = req.headers.authorization;
+const addUserToReq = async (req, res, next) => {
+  const prefix = 'Bearer ';
+  const auth = req.header('Authorization');
+  // if no auth Header is present
+  if (!auth) {
+    next();
 
-  if (!token) {
-    return next(new Error('Unauthorized'));
-  };
+  } else if (auth.startsWith(prefix)) {
+    // slice off "Bearer "
+    const token = auth.slice(prefix.length);
 
-  try {
-    const payload = jwt.verify(token, key);
+    if (!token) {
+      next();
+    };
+    
+    try {
 
-    if (payload.userId !== +req.params.userId) {
-      return next(new Error('Unauthorized'));
+      const verifiedToken = jwt.verify(token, JWT_SECRET);
+
+      const id = verifiedToken && verifiedToken.id;
+
+      if (id) {
+        req.user = await getUserById(id);
+        next();
+      };
+
+    } catch (error) {
+      next(error);
     };
 
-    req.userId = payload.userId;
+  } else {
+    next({
+      error: true,
+      message: `Authorization token must start with ${ prefix }`
+    });
+  };
+};
 
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-
-}
-
-module.exports = { checkForCorrectUser, createToken }
+module.exports = { createToken, addUserToReq };
