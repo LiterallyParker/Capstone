@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 
   } catch (error) {
 
-    console.log(error);
+    console.error(error);
     next(error);
 
   };
@@ -29,7 +29,7 @@ router.get('/:instrumentId', async (req, res, next) => {
     const instrumentRow = await dbInstruments.getInstrumentById(req.params.instrumentId);
 
     if (!instrumentRow.length) {
-      res.send({
+      res.status(500).send({
         error:true,
         message:`Instrument with id ${req.params.instrumentId} not found.`
       });

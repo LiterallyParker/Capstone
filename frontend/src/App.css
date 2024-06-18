@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 300px;
+}
+.error {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+button:hover {
+  cursor: pointer;
+}
+button:active {
+  cursor: default;
+}
+a:active {
+  cursor: default;
+}
 :root {
   font-family: 'Josefin Sans';
+  background-color: rgb(255, 255, 255);
+}
+::-webkit-scrollbar {
+  display: none;
 }

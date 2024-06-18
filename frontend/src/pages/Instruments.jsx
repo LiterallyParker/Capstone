@@ -4,7 +4,8 @@ import Instrument from "../components/Instrument";
 
 export default function Instruments() {
   const [instruments, setInstruments] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filteredInstruments, setFilteredInstruments] = useState([]);
+  const [filter, setFilter] = useState(null);
 
   async function getInstruments() {
     const instruments = await fetchInstruments();
@@ -12,8 +13,8 @@ export default function Instruments() {
   }
 
   useEffect(() => {
-    getInstruments().then(setInstruments)
-  }, []);
+    setInstruments(filteredInstruments)
+  }, [filteredInstruments]);
 
   // useEffect(() => {
   //     const filteredInstruments = instruments.filter((instrument) => {return instrument.catagory === filter});
@@ -24,17 +25,19 @@ export default function Instruments() {
 
   async function handleChange(e) {
     setFilter(e.target.value);
-    const filteredInstruments = await getInstruments().then((result) => {
+    await getInstruments().then((result) => {
       if (e.target.value) {
-        result = result.filter((instrument) => instrument.catagory === e.target.value)
+        result = result.filter((instrument) => instrument.catagory === e.target.value);
+        return result
       }
       return result
-  });
-    setInstruments(await filteredInstruments)
-  }
+  }).then((result) => {
+    setFilteredInstruments(result);
+   });
+  };
 
   return (
-    <div className="instruments">
+    <div className="container instruments">
       <h1 className="title">Instruments</h1>
       <div className="filter">
 
@@ -65,8 +68,8 @@ export default function Instruments() {
         <label htmlFor="Percussion">Percussion</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Modular/Synth" name="filter" value="Modular/Synth" onChange={handleChange} checked = {filter === "Modular/Synth"}/>
-        <label htmlFor="Modular/Synth">Modular/Synth</label>
+        <input className="filter-radio" type="radio" id="Modular" name="filter" value="Modular" onChange={handleChange} checked = {filter === "Modular"}/>
+        <label htmlFor="Modular">Modular</label>
         </div>
         <div className="filter-div">
         <input className="filter-radio" type="radio" id="Woodwinds" name="filter" value="Woodwinds" onChange={handleChange} checked = {filter === "Woodwinds"}/>
@@ -82,6 +85,9 @@ export default function Instruments() {
         </div>
       </div>
       <div>
+        {
+          !instruments.length && <>Use the filter!</>
+        }
         {
           instruments && instruments.map((instrument) => <Instrument key={instrument.id} instrument={instrument} />)
         }

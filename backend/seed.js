@@ -40,7 +40,7 @@ async function seedTables(client) {
       stock INT NOT NULL,
       catagory_id INT REFERENCES catagories(id) NOT NULL,
       imageurl VARCHAR(255) NOT NULL,
-      data VARCHAR(255) NOT NULL
+      data JSON NOT NULL
     );`);
 
     await client.query(`
@@ -54,14 +54,15 @@ async function seedTables(client) {
 
     console.log("Tables Created.\n");
 
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.error(error);
   };
 
 };
 
 
 async function seedUsers(client) {
+  console.log("Seeding Users...");
   const users = [
     {
       firstname:"James",
@@ -89,8 +90,9 @@ async function seedUsers(client) {
     for (const user of users) {
       await client.query(`INSERT INTO users (firstname, lastname, email, hash) VALUES ($1, $2, $3, $4)`, [user.firstname, user.lastname, user.email, user.hash])
     }
+  console.log("Users seeded.\n")
   } catch (error) {
-    console.log(error)
+    (error)
   }
 }
 
@@ -104,7 +106,7 @@ async function seedCatagories(client) {
     }
     console.log("Catagories Seeded.\n");
   } catch (error) {
-    console.log(error);
+    console.error(error);
   };
   
 };
@@ -134,8 +136,8 @@ async function buildDb() {
     await seedTables(client);
     await seedCatagories(client);
     await seedInstruments(client);
-    await seedUsers(client)
-    console.log("You're Doing Good!");
+    await seedUsers(client);
+    
   } catch (error) {
     console.error(error);
   };

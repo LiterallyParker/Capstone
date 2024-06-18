@@ -10,6 +10,7 @@
   border-right: solid #6D676E 5px;
   color: white;
 }
+
 .NavBar .stamp {
   font-size: 1.6rem;
   padding-top: 10px;
@@ -29,7 +30,7 @@
   font-size: medium;
 }
  
-@media (max-width:500px) {
+@media (max-width:600px) {
   .NavBar {
     right: 0;
     bottom: auto;

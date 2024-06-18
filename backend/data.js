@@ -28,19 +28,6 @@ const instruments = [
       }
   },
   {
-      "name": "Digital Synthesizer",
-      "price": "2500.49",
-      "stock": 10,
-      "catagory_id": 6,
-      "imageURL":"https://i.ebayimg.com/images/g/V-8AAOSwGQFlOgct/s-l1200.jpg",
-      "data": {
-          "Brand": "Korg",
-          "Color": "Silver",
-          "Keys": 61,
-          "Polyphony": "8-voice"
-      }
-  },
-  {
       "name": "Acoustic Guitar",
       "price": "980.00",
       "stock": 18,
@@ -216,7 +203,7 @@ const instruments = [
     "price": 1899.99,
     "stock": 7,
     "catagory_id": 7,
-    "imageURL": "https://www.yamaha.com/ussub/img/2020/products/YAS-26II/contents/visual/front.jpg",
+    "imageURL": "https://m.media-amazon.com/images/I/61NKX63KCBL.jpg",
     "data": {
       "Brand": "Yamaha",
       "Type": "Alto",
@@ -229,7 +216,7 @@ const instruments = [
     "price": 1299.50,
     "stock": 10,
     "catagory_id": 8,
-    "imageURL": "https://www.yamaha.com/ussub/img/2020/products/YTR-2330/contents/visual/right.jpg",
+    "imageURL": "https://www.andysmusic.com/cdn/shop/products/yamaha-ytr-4335gsii-silver-plated-bb-trumpet.jpg?v=1620417371",
     "data": {
       "Brand": "Yamaha",
       "Material": "Brass",
@@ -241,7 +228,7 @@ const instruments = [
     "price": 699.00,
     "stock": 15,
     "catagory_id": 7,
-    "imageURL": "https://www.yamaha.com/ussub/img/2020/products/YFL-222/contents/visual/front.jpg",
+    "imageURL": "https://i.ebayimg.com/images/g/kYgAAOSwagJl5kCG/s-l1600.jpg",
     "data": {
       "Brand": "Yamaha",
       "Material": "Nickel Silver",
@@ -253,7 +240,7 @@ const instruments = [
     "price": 1495.25,
     "stock": 5,
     "catagory_id": 8,
-    "imageURL": "https://www.yamaha.com/ussub/img/2020/products/YSL-448G/contents/visual/right.jpg",
+    "imageURL": "https://m.media-amazon.com/images/I/51m1UvUpA8L._AC_UF894,1000_QL80_.jpg",
     "data": {
       "Brand": "Yamaha",
       "Material": "Brass",
@@ -265,7 +252,7 @@ const instruments = [
     "price": 1099.00,
     "stock": 8,
     "catagory_id": 7,
-    "imageURL": "https://www.yamaha.com/ussub/img/2020/products/YCL-255/contents/visual/right.jpg",
+    "imageURL": "https://m.media-amazon.com/images/I/413ebPdfzzS.jpg",
     "data": {
       "Brand": "Yamaha",
       "Material": "ABS Resin",
@@ -289,7 +276,7 @@ const instruments = [
     "price": 1200.00,
     "stock": 2,
     "catagory_id": 7,
-    "imageURL": "https://www.sandarac.co.uk/images/bagpipes.jpg",
+    "imageURL": "https://www.taylorscroft.com/cdn/shop/products/McCallum-AB0-Bagpipes.jpg?v=1476727818",
     "data": {
       "Brand": "McCallum Bagpipes",
       "Material": "African Blackwood",
@@ -301,7 +288,7 @@ const instruments = [
     "price": 49.99,
     "stock": 20,
     "catagory_id": 7,
-    "imageURL": "",
+    "imageURL": "https://i.ebayimg.com/images/g/xjwAAOSw5~BiHHuj/s-l1200.webp",
     "data": {
       "Brand": "Hohner",
       "Material": "Plastic",
@@ -313,7 +300,7 @@ const instruments = [
     "price": 1699.00,
     "stock": 6,
     "catagory_id": 2,
-    "imageURL": "",
+    "imageURL": "https://media.rainpos.com/7832/used4761.jpg",
     "data": {
       "Brand": "Hohner",
       "Color": "Black",
@@ -325,7 +312,7 @@ const instruments = [
     "price": 299.99,
     "stock": 10,
     "catagory_id": 5,
-    "imageURL": "https://cdn.shopify.com/s/files/1/0444/7463/9437/products/gd-x8_720x.jpg?v=1606119207",
+    "imageURL": "https://www.columbuspercussion.com/store/media/catalog/product/cache/1/image/1050x/040ec09b1e35df139433887a97daa66f/x/6/x6535h_1_hr.jpg",
     "data": {
       "Brand": "Grover Pro",
       "Material": "Rosewood",
@@ -337,9 +324,9 @@ const instruments = [
     "price": "675.00",
     "stock": 20,
     "catagory_id": 1,
-    "imageURL": "",
+    "imageURL": "https://i.ebayimg.com/images/g/kSIAAOSwbFxkewFq/s-l1200.jpg",
     "data": {
-      "Brand": "Gibson",
+      "Brand": "Vangoa",
       "Color": "Sunburst",
       "Strings": 8,
       "Body Type": "A-Style"
@@ -350,7 +337,7 @@ const instruments = [
     "price": "320.99",
     "stock": 25,
     "catagory_id": 4,
-    "imageURL": "",
+    "imageURL": "https://www.fullcompass.com/common/products/original/226475.jpg",
     "data": {
       "Brand": "Alesis",
       "Color": "Black",
@@ -363,7 +350,7 @@ const instruments = [
     "price": "199.50",
     "stock": 30,
     "catagory_id": 5,
-    "imageURL": "",
+    "imageURL": "https://m.media-amazon.com/images/I/81N0SEDb+iL._AC_SX425_.jpg",
     "data": {
       "Brand": "Meinl",
       "Color": "Natural",
@@ -375,8 +362,8 @@ const instruments = [
     "name": "MIDI Controller",
     "price": "450.75",
     "stock": 40,
-    "catagory_id": 6,
-    "imageURL": "",
+    "catagory_id": 2,
+    "imageURL": "https://media.musicarts.com/is/image/MMGS7/MPK249-49-Key-Controller-Black-on-Black/L84264000000000-00-1600x1600.jpg",
     "data": {
       "Brand": "Akai",
       "Color": "Black",
@@ -389,7 +376,7 @@ const instruments = [
     "price": "1899.99",
     "stock": 5,
     "catagory_id": 7,
-    "imageURL": "",
+    "imageURL": "https://www.mmimports.com/wp-content/uploads/2017/09/P1140546-2.jpg",
     "data": {
       "Brand": "Buffet",
       "Material": "Grenadilla Wood",
@@ -480,7 +467,7 @@ const catagories = [
     "name": "Percussion",
   },
   {
-    "name": "Modular/Synth",
+    "name": "Modular",
   },
   {
     "name": "Woodwinds",

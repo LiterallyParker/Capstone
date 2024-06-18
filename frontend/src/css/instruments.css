@@ -31,7 +31,7 @@
 }
 
 .list-instrument-image {
-  height: 200px;
+  height: 140px;
 }
 
 .filter {
@@ -50,10 +50,11 @@
   margin: 4px;
 }
 
-@media (max-width:500px) {
+@media (max-width:600px) {
 
   .instruments {
     margin-top: 120px;
+    margin-bottom: 275px;
     margin-left: 0px;
     display: flex;
     flex-direction: column;
