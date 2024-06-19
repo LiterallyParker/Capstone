@@ -32,6 +32,8 @@
 
 .list-instrument-image {
   height: 140px;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
 .filter {
@@ -48,6 +50,17 @@
 
 .filter-div {
   margin: 4px;
+}
+
+.fa-search {
+  padding: 0 8px;
+}
+
+.search-bar {
+  padding: 3px 8px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-bottom: 10px;
 }
 
 @media (max-width:600px) {

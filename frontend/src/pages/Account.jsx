@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { userInfo } from "../api/user";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/Auth";
 export default function Account({ token, setToken }) {
 
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-      async function getUser() {
-        const result = await userInfo(token);
-        return await result;
-      }
-      setUser(getUser());
-
-  }, [token])
-
-  useEffect(() => {
-    async function getUser() {
-      await userInfo(token).then(setUser)
-    }
-    getUser();
-  }, [token])
+  const { user } = useContext(AuthContext)
 
   function logOut() {
     localStorage.removeItem("token");

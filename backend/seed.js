@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const client = require("./db/index.js");
 const { instruments } = require("./data.js");
-const { catagories } = require("./data.js");
+const { categories } = require("./data.js");
 const { createUser } = require("./db/users.js");
 
 async function seedTables(client) {
@@ -14,6 +14,7 @@ async function seedTables(client) {
     DROP TABLE IF EXISTS purchases;
     DROP TABLE IF EXISTS instruments;
     DROP TABLE IF EXISTS catagories;
+    DROP TABLE IF EXISTS categories;
     DROP TABLE IF EXISTS users;
     `);
 
@@ -22,12 +23,12 @@ async function seedTables(client) {
       id SERIAL PRIMARY KEY,
       firstname VARCHAR(255) NOT NULL,
       lastname VARCHAR(255) NOT NULL,
-      email VARCHAR(255) NOT NULL,
+      email VARCHAR(255) UNIQUE NOT NULL,
       hash VARCHAR(255) NOT NULL
     );`);
 
     await client.query(`
-    CREATE TABLE catagories(
+    CREATE TABLE categories(
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL
     );`);
@@ -38,7 +39,7 @@ async function seedTables(client) {
       name VARCHAR(255) NOT NULL,
       price DECIMAL NOT NULL,
       stock INT NOT NULL,
-      catagory_id INT REFERENCES catagories(id) NOT NULL,
+      category_id INT REFERENCES categories(id) NOT NULL,
       imageurl VARCHAR(255) NOT NULL,
       data JSON NOT NULL
     );`);
@@ -48,9 +49,8 @@ async function seedTables(client) {
       id SERIAL PRIMARY KEY,
       user_id INT REFERENCES users(id) NOT NULL,
       total DECIMAL NOT NULL,
-      items VARCHAR(255) NOT NULL
-    )
-    `);
+      items JSON NOT NULL
+    );`);
 
     console.log("Tables Created.\n");
 
@@ -96,15 +96,15 @@ async function seedUsers(client) {
   }
 }
 
-async function seedCatagories(client) {
+async function seedCategories(client) {
 
-  console.log("Seeding Catagories...");
+  console.log("Seeding Categories...");
 
   try {
-    for (const catagory of catagories) {
-      await client.query(`INSERT INTO catagories (name) VALUES ($1)`, [catagory.name]);
+    for (const category of categories) {
+      await client.query(`INSERT INTO categories (name) VALUES ($1)`, [category.name]);
     }
-    console.log("Catagories Seeded.\n");
+    console.log("categories Seeded.\n");
   } catch (error) {
     console.error(error);
   };
@@ -118,8 +118,8 @@ async function seedInstruments(client) {
 
     for (const instrument of instruments) {
       await client.query(
-        `INSERT INTO instruments (name, price, stock, catagory_id, imageurl, data) VALUES ($1, $2, $3, $4, $5, $6)`,
-        [instrument.name, instrument.price, instrument.stock, instrument.catagory_id, instrument.imageURL, instrument.data]
+        `INSERT INTO instruments (name, price, stock, category_id, imageurl, data) VALUES ($1, $2, $3, $4, $5, $6)`,
+        [instrument.name, instrument.price, instrument.stock, instrument.category_id, instrument.imageURL, instrument.data]
       );
     };
 
@@ -134,7 +134,7 @@ async function buildDb() {
   try {
     client.connect();
     await seedTables(client);
-    await seedCatagories(client);
+    await seedCategories(client);
     await seedInstruments(client);
     await seedUsers(client);
     

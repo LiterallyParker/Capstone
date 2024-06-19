@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { updateUser, userInfo } from "../api/user";
+import { AuthContext } from "../context/Auth";
 
-export default function Settings({ token }) {
-  const [user, setUser] = useState(null);
+export default function Settings() {
+
+  const { token, user, setUser } = useContext(AuthContext);
 
   const [newFirstname, setNewFirstname] = useState("");
   const [newLastname, setNewLastname] = useState("");
@@ -14,22 +16,6 @@ export default function Settings({ token }) {
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-
-  useEffect(() => {
-    async function getUser() {
-      const result = await userInfo(token);
-      return await result;
-    }
-    setUser(getUser());
-
-  }, [token]);
-
-  useEffect(() => {
-    async function getUser() {
-      await userInfo(token).then(setUser)
-    };
-    getUser();
-  }, [token]);
 
   function resetFeilds() {
     setNewFirstname("");

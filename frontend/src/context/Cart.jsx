@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, Children } from "react";
+import { createContext, useState, useEffect } from "react";
 
-export const CartContext = createContext("");
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(
@@ -22,9 +22,6 @@ export const CartProvider = ({ children }) => {
             }
             return cartItem
           }
-            // 
-            // ? 
-            // : cartItem
         )
       )
     } else {
@@ -39,10 +36,13 @@ export const CartProvider = ({ children }) => {
     } else {
       setCartItems(
         cartItems.map(
-          (cartItem) =>
-            cartItem.id === item.id
-              ? { ...cartItem, quantity: cartItem.quantity - 1 }
-              : cartItem
+          (cartItem) => {
+            if (cartItem.id === item.id) {
+              return { ...cartItem, quantity: cartItem.quantity - 1 }
+            } else {
+              return cartItem
+            }
+          }
         )
       )
     }
@@ -53,13 +53,15 @@ export const CartProvider = ({ children }) => {
   }
 
   function getCartTotal() {
-    return cartItems.reduce(
+    const total = cartItems.reduce(
       (total, item) => total + item.price * item.quantity, 0
-    )
+    );
+    return total.toFixed(2)
   }
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("total",getCartTotal());
   }, [cartItems]);
 
   useEffect(() => {

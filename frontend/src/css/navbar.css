@@ -14,7 +14,12 @@
 .NavBar .stamp {
   font-size: 1.6rem;
   padding-top: 10px;
-  margin: 0.5rem;
+  margin: 0.5rem 0.5rem 0;
+}
+.NavBar .tiny-stamp {
+  padding: 0 0 0.5rem;
+  margin: 0;
+  text-align: center;
 }
 .NavBar .link {
   margin: 0;
@@ -43,11 +48,13 @@
 
   .NavBar .links {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .NavBar .link {
     padding: 1px 3px;
-    margin: 0 2px;
+    margin: 0 5px;
     color: white;
     border-bottom: 1px solid black;
     border-top: 1px solid #8a5e0d;

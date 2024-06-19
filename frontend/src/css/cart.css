@@ -1,0 +1,42 @@
+.cart h1 {
+  background-color: #FAA916;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.cart-instrument {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.money {
+  color: rgb(0, 168, 0);
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 2px 2px;
+}
+
+.quantity-controls {
+  display: flex;
+}
+.quantity-controls h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+}
+.quantity-controls button {
+  font-size: large;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}

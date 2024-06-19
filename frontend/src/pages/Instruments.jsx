@@ -1,86 +1,73 @@
 import { useEffect, useState, useContext } from "react";
 import { fetchInstruments } from "../api";
 import Instrument from "../components/Instrument";
+import { InstrumentsContext } from "../context/Instruments";
 
 export default function Instruments() {
-  const [instruments, setInstruments] = useState([]);
-  const [filteredInstruments, setFilteredInstruments] = useState([]);
-  const [filter, setFilter] = useState(null);
+  const { instruments, getInstruments, nameFilter, setNameFilter, categoryFilter, setCategoryFilter } = useContext(InstrumentsContext)
 
-  async function getInstruments() {
-    const instruments = await fetchInstruments();
-    return instruments
-  }
-
-  useEffect(() => {
-    setInstruments(filteredInstruments)
-  }, [filteredInstruments]);
 
   // useEffect(() => {
-  //     const filteredInstruments = instruments.filter((instrument) => {return instrument.catagory === filter});
+  //     const filteredInstruments = instruments.filter((instrument) => {return instrument.category === filter});
   //     setInstruments(filteredInstruments);
   //     console.log(instruments);
     
   // }, [filter]);
 
+// (e) => setCategoryFilter(e.target.value)
   async function handleChange(e) {
-    setFilter(e.target.value);
-    await getInstruments().then((result) => {
-      if (e.target.value) {
-        result = result.filter((instrument) => instrument.catagory === e.target.value);
-        return result
-      }
-      return result
-  }).then((result) => {
-    setFilteredInstruments(result);
-   });
-  };
+    setCategoryFilter(e.target.value)
+  }
 
   return (
     <div className="container instruments">
       <h1 className="title">Instruments</h1>
+      <div>
+      <i className="fa-solid fa-search"></i>
+      <input type="text" className="search-bar" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)}/>
+      </div>
       <div className="filter">
 
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="All" name="filter" value="" onChange={handleChange} checked = {filter === ""}/>
+        <input className="filter-radio" type="radio" id="All" name="filter" value="" onChange={(e) => handleChange(e)} checked = {categoryFilter === ""}/>
         <label htmlFor="All">All Instruments</label>
         </div>
 
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Strings" name="filter" value="Strings" onChange={handleChange} checked = {filter === "Strings"}/>
+        <input className="filter-radio" type="radio" id="Strings" name="filter" value="Strings" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Strings"}/>
         <label htmlFor="Strings">Strings</label>
         </div>
         
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Piano/Keys" name="filter" value="Piano/Keys" onChange={handleChange} checked = {filter === "Piano/Keys"}/>
+        <input className="filter-radio" type="radio" id="Piano/Keys" name="filter" value="Piano/Keys" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Piano/Keys"}/>
         <label htmlFor="Piano/Keys">Piano/Keys</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Guitar/Bass" name="filter" value="Guitar/Bass" onChange={handleChange} checked = {filter === "Guitar/Bass"}/>
+        <input className="filter-radio" type="radio" id="Guitar/Bass" name="filter" value="Guitar/Bass" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Guitar/Bass"}/>
         <label htmlFor="Guitar/Bass">Guitar/Bass</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Drum Kits" name="filter" value="Drum Kits" onChange={handleChange} checked = {filter === "Drum Kits"}/>
+        <input className="filter-radio" type="radio" id="Drum Kits" name="filter" value="Drum Kits" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Drum Kits"}/>
         <label htmlFor="Drum Kits">Drum Kits</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Percussion" name="filter" value="Percussion" onChange={handleChange} checked = {filter === "Percussion"}/>
+        <input className="filter-radio" type="radio" id="Percussion" name="filter" value="Percussion" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Percussion"}/>
         <label htmlFor="Percussion">Percussion</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Modular" name="filter" value="Modular" onChange={handleChange} checked = {filter === "Modular"}/>
+        <input className="filter-radio" type="radio" id="Modular" name="filter" value="Modular" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Modular"}/>
         <label htmlFor="Modular">Modular</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Woodwinds" name="filter" value="Woodwinds" onChange={handleChange} checked = {filter === "Woodwinds"}/>
+        <input className="filter-radio" type="radio" id="Woodwinds" name="filter" value="Woodwinds" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Woodwinds"}/>
         <label htmlFor="Woodwinds">Woodwinds</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Brass" name="filter" value="Brass" onChange={handleChange} checked = {filter === "Brass"}/>
+        <input className="filter-radio" type="radio" id="Brass" name="filter" value="Brass" onChange={(e) => handleChange(e)} checked = {categoryFilter === "Brass"}/>
         <label htmlFor="Brass">Brass</label>
         </div>
         <div className="filter-div">
-        <input className="filter-radio" type="radio" id="Etc." name="filter" value="Etc." onChange={handleChange} checked = {filter === "Etc."}/>
+        <input className="filter-radio" type="radio" id="Etc." name="filter" value="Etc." onChange={(e) => handleChange(e)} checked = {categoryFilter === "Etc."}/>
         <label htmlFor="Etc.">Etc.</label>
         </div>
       </div>
