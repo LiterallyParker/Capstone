@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { registerUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/Auth";
 
-export default function Register({ token, setToken }) {
+export default function Register() {
+
+  const { token, setToken } = useContext(AuthContext);
 
   // User Object Variables
   const [firstname, setFirstname] = useState("");

@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { loginUser } from "../api/user.js";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/Auth.jsx";
 
-export default function Login({ token, setToken }) {
+export default function Login() {
+
+  const { token, setToken } = useContext(AuthContext)
 
   // UserObject variables
   const [email, setEmail] = useState("");
