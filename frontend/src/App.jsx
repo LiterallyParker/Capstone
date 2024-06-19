@@ -20,6 +20,9 @@ import Login from './pages/Login'
 import FeaturedInstrument from './pages/FeatureInstrument'
 import Account from './pages/Account'
 import Settings from './pages/Settings'
+import Cart from './pages/Cart'
+
+import { CartContext } from './context/Cart'
 
 function App() {
 
@@ -35,7 +38,7 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar token={token} />
+      <Navbar token={token} setToken={setToken} />
       <Routes>
         <Route path='/' element={<Home token={token} />} />
         <Route path='/register' element={<Register token={token} setToken={setToken}/>} />
@@ -44,6 +47,7 @@ function App() {
         <Route path='/account' element={<Account token={token} setToken={setToken}/>} />
         <Route path='/settings' element={<Settings token={token}/>}/>
         <Route path='/instruments/:id' element={<FeaturedInstrument />}/>
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </Router>
     </>

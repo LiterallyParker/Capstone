@@ -48,11 +48,9 @@ router.post('/register', async (req, res, next) => {
       message: "Supply email and password."
     });
   };
-  if (!firstname) {
-    firstname = "Guest"
-  }
-  if (!lastname) {
-    lastname = "User"
+  if (!firstname && !lastname) {
+    firstname = "Guest";
+    lastname = "User";
   }
   try {
     // Check if user already Exists
@@ -98,6 +96,49 @@ router.get("/account", requireUser, (req, res, next) => {
   try {
     res.send(req.user);
 
+  } catch (error) {
+    next(error);
+
+  };
+});
+
+router.patch("/account", requireUser, async (req, res, next) => {
+  try {
+
+    // get changes
+    let { firstname, lastname, email, password, newPassword } = req.body;
+
+    // if a new password request, ensure old password is correct
+    if (newPassword) {
+      if (!password) {
+        res.send({error:true, message:"Supply old password."});
+        return;
+      };
+      const user = await dbUsers.getUserByEmail(req.user.email);
+      const passwordsMatch = await bcrypt.compare(password, user.hash);
+      if (!passwordsMatch) {
+        res.send({error:true, message:"Incorrect Password."})
+        return;
+      };
+      await dbUsers.updatePassword(req.user.id, newPassword)
+    };
+
+    // set default if no change was made
+    if (!firstname) {
+      firstname = req.user.firstname
+    }
+    if (!lastname) {
+      lastname = req.user.lastname
+    }
+    if (!email) {
+      email = req.user.email
+    }
+
+    const userObject = {firstname, lastname, email}
+    const patchedUser = await dbUsers.updateUserInfo(req.user.id, userObject);
+    res.send(patchedUser);
+    next();
+    
   } catch (error) {
     next(error);
 

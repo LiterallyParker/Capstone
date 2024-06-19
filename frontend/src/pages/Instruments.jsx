@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { fetchInstruments } from "../api";
 import Instrument from "../components/Instrument";
 

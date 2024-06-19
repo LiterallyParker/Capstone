@@ -23,6 +23,10 @@
   margin: 10px;
 }
 
+.required {
+  color: red;
+}
+
 .user-label {
   margin: 12.7px 0;
 }

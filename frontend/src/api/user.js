@@ -1,7 +1,9 @@
 const BaseURL = "http://localhost:3001/api"
 
 export async function userInfo(token) {
-
+  if(!token) {
+    return;
+  }
   try {
     const response = await fetch(BaseURL + "/users/account", {
     headers: {
@@ -49,9 +51,35 @@ export async function loginUser(userObject) {
       
     });
     const result = await response.json();
+
     return result;
 
   } catch (error) {
     console.error(error);
   };
 };
+
+export async function updateUser(token, { firstname, lastname, email, password, newPassword }) {
+  try {
+    const response = await fetch(BaseURL + "/users/account", {
+      method: "PATCH",
+      headers: {
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+      },
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        email,
+        password,
+        newPassword
+      })
+    });
+    const result = response.json();
+    return result;
+    
+  } catch (error) {
+    console.error(error)
+  }
+
+}

@@ -15,6 +15,7 @@ export default function Login({ token, setToken }) {
     e.preventDefault();
     const response = await loginUser({ email, password });
     setError(null);
+
     if (response.error) {
       setError(response.message);
       return;

@@ -9,6 +9,8 @@
     "pg": "^8.11.5"
   },
   "scripts": {
+    "server": "node ./server.js",
+    "seed":"node ./seed.js",
     "seed:dev": "nodemon ./seed.js",
     "server:dev": "nodemon server.js"
   }

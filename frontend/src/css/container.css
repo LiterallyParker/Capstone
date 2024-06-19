@@ -1,6 +1,15 @@
 .container .title {
   font-size: 2.5rem;
 }
+.container .paragraph {
+  text-indent: 1rem;
+  margin: 1rem 10rem;
+}
+@media (max-width:900px) {
+  .container .paragraph {
+    margin: 1rem 3rem;
+  }
+}
 @media (max-width:600px) {
   .container {
     margin-left: auto;
