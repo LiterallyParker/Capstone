@@ -34,6 +34,7 @@ export default function Account({ token, setToken }) {
       {
         user && <>
         <h2>{user.firstname} {user.lastname}</h2>
+        <p className="email">{user.email}</p>
         <hr width={300}></hr>
         <Link to="/settings"><p>Settings</p></Link>
         <Link to="/"><p onClick={logOut}>Log out</p></Link>

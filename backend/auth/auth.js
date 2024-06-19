@@ -40,7 +40,6 @@ const addUserToReq = async (req, res, next) => {
     try {
 
       const verifiedToken = jwt.verify(token, JWT_SECRET);
-
       const id = verifiedToken && verifiedToken.id;
 
       if (id) {

@@ -21,6 +21,18 @@
   margin: 1rem;
 }
 
+.add-to-cart {
+  background-color: rgb(112, 186, 0);
+  font-size: 1rem;
+  border: none;
+  color: white;
+}
+.add-to-cart:hover {
+  cursor: pointer;
+}
+.add-to-cart:active {
+  cursor: default;
+}
 @media (max-width:600px) {
   .feature-image {
     width:150px
