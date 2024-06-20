@@ -16,12 +16,12 @@ require("dotenv").config();
 
 const connectionString = process.env.DATABASE_URL;
 
-const client = new Client({connectionString, ssl:{rejectUnauthorized:false}})
+const client = new Client({connectionString, ssl:{rejectUnauthorized:false}});
 
-client.on("connect", () => {console.log("connected.")})
+client.on("connect", () => {console.log("connected.")});
 client.on("error", (error) => {
-  console.log("error: ", error)
-  process.exit(-1)
-})
+  console.log("Error Parker: ", error);
+  process.exit(-1);
+});
 
 module.exports = client;
