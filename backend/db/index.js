@@ -1,7 +1,8 @@
 const { Client } = require("pg");
 require("dotenv").config();
 
-const production = process.env.NODE_ENVIRONMENT === "production";
+// const production = process.env.NODE_ENVIRONMENT === "production";
+const production = true
 const client = new Client(
   {
     host: production ? process.env.DATABASE_HOSTNAME : process.env.DEV_HOSTNAME,
