@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { getInstrumentById } from "../api";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../context/Cart"
 
 export default function FeaturedInstrument() {
@@ -35,8 +35,10 @@ export default function FeaturedInstrument() {
           ))
         }
         <h3>{instrument.stock} left in stock!</h3>
-        <button onClick={() => handleAddToCart(instrument)} className="add-to-cart">Add to cart - ${parseFloat(instrument.price).toFixed(2)}</button>
-        <h3 className="cart-total">Cart total - ${getCartTotal()}</h3>
+        <button onClick={() => handleAddToCart(instrument)} className="green-button">Add to cart - ${instrument.price}</button>
+        <h3 className="cart-total">Cart total - <span className="money">${getCartTotal()}</span></h3>
+        <Link to="/cart" className="view-cart">View cart</Link>
+        
       </>
     )
   }

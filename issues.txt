@@ -1,3 +1,0 @@
-Authentication - Middleware attaching user
-Images - set instruments Images
-Cart/Checkout - create with local storage - use reference in github

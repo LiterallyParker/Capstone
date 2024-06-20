@@ -1,6 +1,6 @@
 const client = require('./index');
 
-async function getInstrumentRows() {
+async function getInstruments() {
   try {
 
     const SQL = `SELECT instruments.id as id, instruments.name as name, instruments.price as price, instruments.stock as stock, categories.name as category, instruments.imageurl as imageURL, instruments.data as data FROM instruments
@@ -23,8 +23,8 @@ async function getInstrumentById(id) {
     SELECT instruments.id as id, instruments.name as name, instruments.price as price, instruments.stock as stock, categories.name as category, instruments.imageurl as imageurl, instruments.data as data FROM instruments
     JOIN categories on categories.id = instruments.category_id
     WHERE instruments.id = $1`;
-    const { rows } = await client.query(SQL, [id]);
-    return rows;
+    const { rows: [instrument] } = await client.query(SQL, [id]);
+    return instrument;
 
   } catch (error) {
 
@@ -34,4 +34,4 @@ async function getInstrumentById(id) {
 
 }
 
-module.exports = { getInstrumentRows, getInstrumentById };
+module.exports = { getInstruments, getInstrumentById };

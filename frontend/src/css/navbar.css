@@ -11,16 +11,22 @@
   color: white;
 }
 
-.NavBar .stamp {
+.stamp {
   font-size: 1.6rem;
   padding-top: 10px;
   margin: 0.5rem 0.5rem 0;
 }
+
+.stamp:hover {
+  cursor: pointer;
+}
+
 .NavBar .tiny-stamp {
   padding: 0 0 0.5rem;
   margin: 0;
   text-align: center;
 }
+
 .NavBar .link {
   margin: 0;
   padding: 0;
@@ -28,6 +34,7 @@
   border-radius: 5px;
   text-decoration: none;
 }
+
 .NavBar h3 {
   margin: 0;
   padding: 5px 0;

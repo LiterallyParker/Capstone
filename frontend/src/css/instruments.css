@@ -6,6 +6,7 @@
   border-bottom: 5px inset #1B1B1E;
   border-left: 5px inset #1B1B1E;
   padding: 5px 10px;
+  margin-bottom: 0.5rem;
 }
 
 .instruments {
@@ -37,15 +38,14 @@
 }
 
 .filter {
-  background-color: #96031A;
+  display: flex;
+  background-color: #FAA916;
   color: white;
   border-left: 5px inset #1B1B1E;
   border-bottom: 5px inset #1B1B1E;
   border-radius: 5px;
   padding: 5px;
-  position: fixed;
-  left: 250px;
-  top: 140px;
+  margin: 0;
 }
 
 .filter-div {
@@ -57,10 +57,22 @@
 }
 
 .search-bar {
+  font-size: 1rem;
   padding: 3px 8px;
   border-radius: 10px;
   border: 1px solid;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  width: 300px;
+}
+
+@media (max-width:1300px) {
+  .filter {
+    display: block;
+    position: fixed;
+    left: 5px;
+    top: inherit;
+    bottom: 10px;
+  }
 }
 
 @media (max-width:600px) {
@@ -84,11 +96,6 @@
     height: 100px;
   }
 
-  .filter {
-    position: fixed;
-    left: 5px;
-    top: inherit;
-    bottom: 10px;
-  }
+
 
 }

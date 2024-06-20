@@ -11,11 +11,12 @@ async function seedTables(client) {
   try {
 
     await client.query(`
-    DROP TABLE IF EXISTS purchases;
-    DROP TABLE IF EXISTS instruments;
-    DROP TABLE IF EXISTS catagories;
-    DROP TABLE IF EXISTS categories;
-    DROP TABLE IF EXISTS users;
+      DROP TABLE IF EXISTS purchases;
+      DROP TABLE IF EXISTS instruments;
+      DROP TABLE IF EXISTS catagories;
+      DROP TABLE IF EXISTS categories;
+      DROP TABLE IF EXISTS totals;
+      DROP TABLE IF EXISTS users;
     `);
 
     await client.query(`
@@ -45,12 +46,23 @@ async function seedTables(client) {
     );`);
 
     await client.query(`
+    CREATE TABLE totals(
+      id SERIAL PRIMARY KEY,
+      user_id INT REFERENCES users(id) NOT NULL,
+      purchasedate TIMESTAMP NOT NULL,
+      total DECIMAL NOT NULL
+      )`);
+
+    await client.query(`
     CREATE TABLE purchases(
       id SERIAL PRIMARY KEY,
       user_id INT REFERENCES users(id) NOT NULL,
-      total DECIMAL NOT NULL,
-      items JSON NOT NULL
-    );`);
+      instrument_id INT REFERENCES instruments(id) NOT NULL,
+      total_id INT REFERENCES totals(id) NOT NULL,
+      quantity INT NOT NULL,
+      purchasedate TIMESTAMP NOT NULL
+      );`);
+
 
     console.log("Tables Created.\n");
 

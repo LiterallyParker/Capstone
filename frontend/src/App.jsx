@@ -23,6 +23,7 @@ import FeaturedInstrument from './pages/FeatureInstrument'
 import Account from './pages/Account'
 import Settings from './pages/Settings'
 import Cart from './pages/Cart'
+import Purchases from './pages/Purchases'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/settings' element={<Settings />}/>
         <Route path='/instruments/:id' element={<FeaturedInstrument />}/>
         <Route path='/cart' element={<Cart />} />
+        <Route path='/purchases' element={<Purchases />} />
       </Routes>
     </Router>
     </>

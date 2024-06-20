@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const auth = require('../auth/auth');
 const dbUsers = require('../db/users');
-const { requireUser } = require('../util/users')
+const { requireUser } = require('../util/users');
 
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
@@ -25,15 +25,15 @@ router.post('/login', async (req, res, next) => {
     if (!user) {
       res.send({
         error: true,
-        message:"Email or password is incorrect."
+        message: "Email or password is incorrect."
       });
     };
 
     // Create Token
     const token = await auth.createToken(user);
-  
-    res.send({ error:false, user, token });
-    
+
+    res.send({ error: false, user, token });
+
   } catch (error) {
     next(error);
   };
@@ -41,27 +41,27 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.post('/register', async (req, res, next) => {
-  let { firstname, lastname, email, password } = req.body
+  let { firstname, lastname, email, password } = req.body;
+
   if (!email || !password) {
     res.status(500).send({
       error: true,
       message: "Supply email and password."
     });
   };
+
   if (!firstname && !lastname) {
     firstname = "Guest";
     lastname = "User";
-  }
+  };
+
   try {
     // Check if user already Exists
-
     const existingUser = await dbUsers.getUserByEmail(req.body.email.toLowerCase());
     if (existingUser) {
       res.status(400).send({ error: true, message: "User with the supplied email already exists." });
       return;
     };
-
-    // Create new user from request
 
     const userObject = {
       firstname: firstname,
@@ -71,9 +71,9 @@ router.post('/register', async (req, res, next) => {
     };
 
     // Add user to database
-
     const createdUser = await dbUsers.createUser(userObject);
     const token = await auth.createToken(createdUser);
+
     res.send({
       error: false,
       user: {
@@ -89,10 +89,10 @@ router.post('/register', async (req, res, next) => {
     next(error);
 
   };
-
 });
 
 router.get("/account", requireUser, (req, res, next) => {
+
   try {
     res.send(req.user);
 
@@ -103,42 +103,48 @@ router.get("/account", requireUser, (req, res, next) => {
 });
 
 router.patch("/account", requireUser, async (req, res, next) => {
-  try {
 
+  try {
     // get changes
     let { firstname, lastname, email, password, newPassword } = req.body;
 
     // if a new password request, ensure old password is correct
     if (newPassword) {
+
       if (!password) {
-        res.send({error:true, message:"Supply old password."});
+        res.send({ error: true, message: "Supply old password." });
         return;
       };
+
       const user = await dbUsers.getUserByEmail(req.user.email);
       const passwordsMatch = await bcrypt.compare(password, user.hash);
+
       if (!passwordsMatch) {
-        res.send({error:true, message:"Incorrect Password."})
+        res.send({ error: true, message: "Incorrect Password." })
         return;
       };
+
       await dbUsers.updatePassword(req.user.id, newPassword)
+
     };
 
     // set default if no change was made
     if (!firstname) {
-      firstname = req.user.firstname
-    }
+      firstname = req.user.firstname;
+    };
     if (!lastname) {
-      lastname = req.user.lastname
-    }
+      lastname = req.user.lastname;
+    };
     if (!email) {
-      email = req.user.email
-    }
+      email = req.user.email;
+    };
 
-    const userObject = {firstname, lastname, email}
+    const userObject = { firstname, lastname, email }
     const patchedUser = await dbUsers.updateUserInfo(req.user.id, userObject);
+
     res.send(patchedUser);
     next();
-    
+
   } catch (error) {
     next(error);
 
