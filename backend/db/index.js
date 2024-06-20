@@ -12,4 +12,10 @@ const client = new Client(
   }
 );
 
+client.on("connect", () => {console.log("connected.")})
+client.on("error", (error) => {
+  console.log("error: ", error)
+  process.exit(-1)
+})
+
 module.exports = client;
