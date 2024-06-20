@@ -6,8 +6,7 @@ const dbInstruments = require("../db/instruments")
 router.get('/', async (req, res, next) => {
 
   try {
-
-    const instrumentRows = await dbInstruments.getInstrumentRows();
+    const instrumentRows = await dbInstruments.getInstruments();
 
     res.send({
       error: false,
@@ -15,7 +14,6 @@ router.get('/', async (req, res, next) => {
     });
 
   } catch (error) {
-
     console.error(error);
     next(error);
 
@@ -24,27 +22,29 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/:instrumentId', async (req, res, next) => {
+  const id = req.params.instrumentId;
+
   try {
+    const instrument = await dbInstruments.getInstrumentById(id);
 
-    const instrumentRow = await dbInstruments.getInstrumentById(req.params.instrumentId);
-
-    if (!instrumentRow.length) {
+    if (!instrument) {
       res.status(500).send({
-        error:true,
-        message:`Instrument with id ${req.params.instrumentId} not found.`
+        error: true,
+        message: `Instrument with id ${req.params.instrumentId} not found.`
       });
       return;
-    }
+    };
 
     res.send({
-      error:false,
-      instrument: {...instrumentRow[0]}
+      error: false,
+      instrument
     });
 
   } catch (error) {
     console.error(error);
     next(error);
-  }
-})
+
+  };
+});
 
 module.exports = router;

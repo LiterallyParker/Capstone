@@ -6,26 +6,14 @@ import { InstrumentsContext } from "../context/Instruments";
 export default function Instruments() {
   const { instruments, getInstruments, nameFilter, setNameFilter, categoryFilter, setCategoryFilter } = useContext(InstrumentsContext)
 
-
-  // useEffect(() => {
-  //     const filteredInstruments = instruments.filter((instrument) => {return instrument.category === filter});
-  //     setInstruments(filteredInstruments);
-  //     console.log(instruments);
-    
-  // }, [filter]);
-
-// (e) => setCategoryFilter(e.target.value)
   async function handleChange(e) {
     setCategoryFilter(e.target.value)
   }
 
   return (
     <div className="container instruments">
+
       <h1 className="title">Instruments</h1>
-      <div>
-      <i className="fa-solid fa-search"></i>
-      <input type="text" className="search-bar" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)}/>
-      </div>
       <div className="filter">
 
         <div className="filter-div">
@@ -72,8 +60,12 @@ export default function Instruments() {
         </div>
       </div>
       <div>
+      <i className="fa-solid fa-search"></i>
+      <input type="text" className="search-bar" value={nameFilter} onChange={(e) => setNameFilter(e.target.value)}/>
+      </div>
+      <div>
         {
-          !instruments.length && <>Use the filter!</>
+          !instruments.length && <>Nothing to see...</>
         }
         {
           instruments && instruments.map((instrument) => <Instrument key={instrument.id} instrument={instrument} />)

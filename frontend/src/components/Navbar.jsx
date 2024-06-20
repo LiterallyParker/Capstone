@@ -1,23 +1,24 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useContext } from "react";
 import { AuthContext } from "../context/Auth";
 
 export default function Navbar() {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <div className="NavBar">
       {
         user &&
         <> 
-        <p className="stamp">{user.firstname} {user.lastname}</p>
+        <p className="stamp" onClick={(e) => navigate("/")}>{user.firstname} {user.lastname}</p>
         <p className="tiny-stamp">InstrumentDash</p>
         </>
       }
       {
         !user && 
         <>
-        <p className="stamp">InstrumentDash</p>
+        <p className="stamp" onClick={(e) => navigate("/")}>InstrumentDash</p>
         <p className="tiny-stamp">Where sounds are sold</p>
         </>
       }

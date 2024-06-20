@@ -12,13 +12,13 @@ export const CartProvider = ({ children }) => {
   function addToCart(item) {
 
     const itemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-    console.log(itemInCart)
+
     if (itemInCart) {
       setCartItems(
         cartItems.map(
           (cartItem) => {
             if (cartItem.id === item.id) {
-              return { ...cartItem, quantity: cartItem.quantity + 1 }
+              return { id:cartItem.id, price:item.price, quantity: cartItem.quantity + 1 }
             }
             return cartItem
           }
