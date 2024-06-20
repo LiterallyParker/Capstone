@@ -1,10 +1,10 @@
-const BaseURL = "http://localhost:3001/api";
-
+const DevURL = "http://localhost:3000/api";
+const ProductionURL = "https://capstone-4-vk50.onrender.com/api"
 
 export async function fetchInstruments() {
   try {
 
-    const response = await fetch(BaseURL + "/instruments", {
+    const response = await fetch(ProductionURL + "/instruments", {
       method: "GET",
       headers: {
         "Content-Type":"application/json"
@@ -15,12 +15,13 @@ export async function fetchInstruments() {
 
   } catch (error) {
     throw new Error(error);
+    
   };
 };
 
 export async function getInstrumentById(id) {
   try {
-    const response = await fetch(BaseURL + `/instruments/${id}`, {
+    const response = await fetch(ProductionURL + `/instruments/${id}`, {
       method: "GET",
       headers: {
         "Content-Type":"application/json"

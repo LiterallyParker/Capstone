@@ -13,8 +13,11 @@ require("dotenv").config();
   //   ssl: { rejectUnauthorized: false }
   // }
 // );
+let connectionString = process.env.DATABASE_URL;
 
-const connectionString = process.env.DATABASE_URL;
+if (process.env.NODE_ENV === "dev") {
+  connectionString = process.env.DEV_DATABASE_URL
+}
 
 const client = new Client({connectionString, ssl:{rejectUnauthorized:false}});
 

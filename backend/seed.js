@@ -3,7 +3,6 @@ const client = require("./db/index.js");
 const { instruments } = require("./data.js");
 const { categories } = require("./data.js");
 const { createUser } = require("./db/users.js");
-console.log(client)
 async function seedTables(client) {
 
   console.log("Creating Tables...");

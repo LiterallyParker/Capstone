@@ -1,10 +1,11 @@
-const BaseURL = "http://localhost:3001/api"
+const DevURL = "http://localhost:3000/api";
+const ProductionURL = "https://capstone-4-vk50.onrender.com/api"
 
 export async function addPurchase({ token, items }) {
 
   try {
 
-    const response = await fetch(BaseURL + "/purchases", {
+    const response = await fetch(ProductionURL + "/purchases", {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
@@ -24,7 +25,7 @@ export async function addPurchase({ token, items }) {
 
 export async function getUserPurchases(token) {
   try {
-    const response = await fetch(BaseURL + "/purchases", {
+    const response = await fetch(ProductionURL + "/purchases", {
       headers: {
         "Content-Type":"application/json",
         "Authorization":`Bearer ${token}`
