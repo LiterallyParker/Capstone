@@ -1,14 +1,15 @@
 const { Client } = require("pg");
 require("dotenv").config();
 
-const production = true
+const production = process.env.NODE_ENVIRONMENT === "production";
 const client = new Client(
   {
     host: production ? process.env.DATABASE_HOSTNAME : process.env.DEV_HOSTNAME,
     port: process.env.DATABASE_PORT,
     database: production ? process.env.DATABASE_HOSTNAME : process.env.DEV_DATABASE,
     user: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD
+    password: process.env.DATABASE_PASSWORD,
+    ssl: production ? { rejectUnauthorized: true } : false
   }
 );
 
