@@ -10,7 +10,7 @@ const client = new Client(
     database: production ? process.env.DATABASE_HOSTNAME : process.env.DEV_DATABASE,
     user: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    ssl: production ? { rejectUnauthorized: true } : false
+    ssl: production ? { rejectUnauthorized: true } : { rejectUnauthorized: false }
   }
 );
 
