@@ -37,6 +37,7 @@ function Cart() {
   }
 
   function itemData(item) {
+    console.log(item)
     return (
       <div className='cart-instrument' key={item.id}>
         <Instrument instrument={item} />
@@ -54,7 +55,7 @@ function Cart() {
   }, [cartItems])
 
   return (
-    <div className='container cart'>
+    <div className='container cart margin-left'>
       {
         cartItems.map((item) => itemData(item)
         )}
@@ -76,7 +77,7 @@ function Cart() {
       }
       {
         purchase && (
-          <div className='purchase'>
+          <div>
             <h2>Purchase Confirmed!</h2>
             <Invoice purchase={purchase}/>
           </div>

@@ -15,6 +15,7 @@
 .quantity-controls {
   display: flex;
 }
+
 .quantity-controls h3 {
   display: flex;
   align-items: center;
@@ -24,6 +25,7 @@
   width: 2rem;
   height: 2rem;
 }
+
 .quantity-controls button {
   font-size: large;
   width: 2rem;
@@ -33,18 +35,7 @@
   background: none;
   border: none;
 }
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 .no-margin {
   margin: 0;
-}
-.purchase {
-  padding: 1rem;
-  width: 20rem;
-}
-.item {
-  margin: 30px 0;
 }

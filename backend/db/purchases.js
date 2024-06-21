@@ -68,14 +68,15 @@ async function getPurchasesByUserId(user_id) {
         };
 
       });
-      async function getPrice(purchase) {
+      async function attachInfo(purchase) {
         const instrument = await getInstrumentById(purchase.instrument_id);
+        purchase.name = await instrument.name
         purchase.price = await instrument.price
         return instrument.price
       }
 
       items = items.map((purchase) => {
-        purchase.price = getPrice(purchase)
+        attachInfo(purchase)
         delete purchase.instrument_id
         return purchase
       })

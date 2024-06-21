@@ -56,7 +56,7 @@ export default function Register() {
   };
 
   return (
-    <div className="container">
+    <div className="container margin-left">
       <div className="form-page">
         <h2 className="title">Register</h2>
         <div className="user-form">

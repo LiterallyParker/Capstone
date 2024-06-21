@@ -10,6 +10,7 @@ import './css/forms.css'
 import './css/feature.css'
 import './css/settings.css'
 import './css/cart.css'
+import './css/invoice.css'
 
 // Components
 import Navbar from './components/Navbar'

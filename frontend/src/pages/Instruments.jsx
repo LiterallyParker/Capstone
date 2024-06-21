@@ -11,7 +11,7 @@ export default function Instruments() {
   }
 
   return (
-    <div className="container instruments">
+    <div className="container instruments margin-left">
 
       <h1 className="title">Instruments</h1>
       <div className="filter">

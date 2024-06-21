@@ -2,7 +2,7 @@ export default function Home() {
 
   return (
 
-    <div className="container">
+    <div className="container margin-left">
       <h1 className="title">InstrumentDash</h1>
       <h2 className="slogan">Welcome to InstrumentDash, where sounds are sold!</h2>
       <p className="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet dictum sit amet justo donec enim diam vulputate ut. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Facilisi nullam vehicula ipsum a arcu. Viverra nam libero justo laoreet sit amet. Purus semper eget duis at. Volutpat lacus laoreet non curabitur gravida. Morbi enim nunc faucibus a pellentesque sit amet porttitor eget. Ullamcorper dignissim cras tincidunt lobortis feugiat. At imperdiet dui accumsan sit amet nulla. Nulla aliquet porttitor lacus luctus accumsan tortor posuere. Ac turpis egestas maecenas pharetra convallis posuere morbi. Libero id faucibus nisl tincidunt eget nullam. Id ornare arcu odio ut sem. Id venenatis a condimentum vitae sapien pellentesque habitant. Nunc aliquet bibendum enim facilisis gravida. Enim diam vulputate ut pharetra sit amet.</p>

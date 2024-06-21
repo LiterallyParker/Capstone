@@ -35,7 +35,7 @@ export default function FeaturedInstrument() {
           ))
         }
         <h3>{instrument.stock} left in stock!</h3>
-        <button onClick={() => handleAddToCart(instrument)} className="green-button">Add to cart - ${instrument.price}</button>
+        <button onClick={() => handleAddToCart(instrument)} className="green-button">Add to cart - ${parseFloat(instrument.price).toFixed(2)}</button>
         <h3 className="cart-total">Cart total - <span className="money">${getCartTotal()}</span></h3>
         <Link to="/cart" className="view-cart">View cart</Link>
         
@@ -44,7 +44,7 @@ export default function FeaturedInstrument() {
   }
 
   return (
-    <div className="container">
+    <div className="container margin-left">
 
       {
         instrument && (

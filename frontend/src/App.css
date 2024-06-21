@@ -5,10 +5,13 @@
   background-color: white;
   border-radius: 10px;
 }
-.thick {
-  height: 3px;
-  width: 400px;
-  background-color: black;
+.margin-left {
+  margin-left: 250px
+}
+@media (max-width:600px) {
+  .margin-left {
+    margin-left: auto;
+  }
 }
 .green-button {
   background-color: rgb(112, 186, 0);

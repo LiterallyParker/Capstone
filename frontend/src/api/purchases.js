@@ -5,7 +5,7 @@ export async function addPurchase({ token, items }) {
 
   try {
 
-    const response = await fetch(ProductionURL + "/purchases", {
+    const response = await fetch(DevURL + "/purchases", {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
@@ -25,7 +25,7 @@ export async function addPurchase({ token, items }) {
 
 export async function getUserPurchases(token) {
   try {
-    const response = await fetch(ProductionURL + "/purchases", {
+    const response = await fetch(DevURL + "/purchases", {
       headers: {
         "Content-Type":"application/json",
         "Authorization":`Bearer ${token}`

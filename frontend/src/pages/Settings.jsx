@@ -57,7 +57,7 @@ export default function Settings() {
   }
 
   return (
-    <div className="container">
+    <div className="container margin-left">
       <h1 className="title">Settings</h1>
       {
         user && <>

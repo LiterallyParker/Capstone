@@ -16,7 +16,7 @@ export default function Purchases() {
   }, [token])
 
   return (
-    <div className="container">
+    <div className="container margin-left">
       <h1 className="title">Purchases</h1>
       {
         user && <>

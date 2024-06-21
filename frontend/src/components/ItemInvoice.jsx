@@ -7,7 +7,7 @@ export default function ItemInvoice({item}) {
           <hr className="no-margin"/>
           <div className='row'>
             <p>Item price:</p>
-            <p><span className='money'>${item.price}</span></p>
+            <p><span className='money'>${parseFloat(item.price).toFixed(2)}</span></p>
           </div>
           <hr className='no-margin'/>
           <div className='row'>
@@ -17,7 +17,7 @@ export default function ItemInvoice({item}) {
           <hr className='no-margin'/>
           <div className='row'>
             <p>Subtotal:</p>
-            <p><span className='money'>${item.total.toFixed(2)}</span></p>
+            <p><span className='money'>${parseFloat(item.total).toFixed(2)}</span></p>
           </div>
           <hr />
         </div>

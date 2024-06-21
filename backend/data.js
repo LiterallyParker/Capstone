@@ -486,30 +486,6 @@ const instruments = [
       "Color": "Silver",
       "Type": "Double"
     }
-  },
-  {
-    "name": "Trumpet",
-    "price": 1299.50,
-    "stock": 10,
-    "category_id": 8,
-    "imageURL": "",
-    "data": {
-      "Brand": "Conn",
-      "Material": "Brass",
-      "Color": "Silver Plated"
-    }
-  },
-  {
-    "name": "Trombone",
-    "price": 1495.25,
-    "stock": 5,
-    "category_id": 8,
-    "imageURL": "",
-    "data": {
-      "Brand": "Yamaha",
-      "Material": "Brass",
-      "Color": "Gold Lacquer"
-    }
   }
 ];
 const categories = [

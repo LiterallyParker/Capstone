@@ -4,7 +4,7 @@ const ProductionURL = "https://capstone-4-vk50.onrender.com/api"
 export async function fetchInstruments() {
   try {
 
-    const response = await fetch(ProductionURL + "/instruments", {
+    const response = await fetch(DevURL + "/instruments", {
       method: "GET",
       headers: {
         "Content-Type":"application/json"
@@ -21,7 +21,7 @@ export async function fetchInstruments() {
 
 export async function getInstrumentById(id) {
   try {
-    const response = await fetch(ProductionURL + `/instruments/${id}`, {
+    const response = await fetch(DevURL + `/instruments/${id}`, {
       method: "GET",
       headers: {
         "Content-Type":"application/json"

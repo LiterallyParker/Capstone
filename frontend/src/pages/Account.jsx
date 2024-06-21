@@ -13,7 +13,7 @@ export default function Account({ token, setToken }) {
   }
 
   return (
-    <div className="container">
+    <div className="container margin-left">
       <h1 className="title">Account</h1>
       {
         user && <>

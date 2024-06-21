@@ -4,7 +4,6 @@ const { instruments } = require("./data.js");
 const { categories } = require("./data.js");
 const { createUser } = require("./db/users.js");
 async function seedTables(client) {
-
   console.log("Creating Tables...");
 
   try {

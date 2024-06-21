@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
         cartItems.map(
           (cartItem) => {
             if (cartItem.id === item.id) {
-              return { id:cartItem.id, price:item.price, quantity: cartItem.quantity + 1 }
+              return { ...cartItem, quantity: cartItem.quantity + 1 }
             }
             return cartItem
           }

@@ -18,5 +18,12 @@ DATA STRUCTURE
             "lastname": "User",
             "email": "parkernash2001@gmail.com"
           },
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNzE4OTEyMjY0LCJleHAiOjE3MTk1MTcwNjR9.OWe-3K6_9IhWKISFuvy9zl_9cpJdgm0v0AIaGKFLDQI"
+          "":[
+            {
+
+            },
+            {
+              
+            }
+          ]
         }

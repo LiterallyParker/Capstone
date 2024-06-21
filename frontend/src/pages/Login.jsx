@@ -29,7 +29,7 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
+    <div className="container margin-left">
       <div className="form-page">
         <h2 className="title">Login</h2>
       <div className="user-form">
