@@ -62,7 +62,7 @@ function Cart() {
       {
         !cartItems.length && <>
           <h2>Nothing in your cart!</h2>
-          <Link to="/instruments">View instrumnets</Link>
+          <Link to="/instruments">View instruments</Link>
         </>
       }
       {
