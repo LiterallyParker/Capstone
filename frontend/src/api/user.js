@@ -1,5 +1,14 @@
 const DevURL = "http://localhost:3000/api";
 const ProductionURL = "https://capstone-4-vk50.onrender.com/api"
+const MODE = "production"
+let BASE_URL = ""
+
+if (MODE === "production") {
+  BASE_URL = ProductionURL
+}
+if (MODE === "dev") {
+  BASE_URL = DevURL
+}
 
 export async function userInfo(token) {
 
@@ -8,7 +17,7 @@ export async function userInfo(token) {
   }
 
   try {
-    const response = await fetch(DevURL + "/users/account", {
+    const response = await fetch(BASE_URL + "/users/account", {
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
@@ -26,7 +35,7 @@ export async function userInfo(token) {
 export async function registerUser(userObject) {
   try {
 
-    const response = await fetch(DevURL + "/users/register", {
+    const response = await fetch(BASE_URL + "/users/register", {
       method: "POST",
       headers: {
         "Content-Type":"application/json"
@@ -47,7 +56,7 @@ export async function registerUser(userObject) {
 export async function loginUser(userObject) {
   try {
 
-    const response = await fetch(DevURL + "/users/login", {
+    const response = await fetch(BASE_URL + "/users/login", {
       method: "POST",
       headers: {
         "Content-Type":"application/json"
@@ -66,7 +75,7 @@ export async function loginUser(userObject) {
 
 export async function updateUser(token, { firstname, lastname, email, password, newPassword }) {
   try {
-    const response = await fetch(DevURL + "/users/account", {
+    const response = await fetch(BASE_URL + "/users/account", {
       method: "PATCH",
       headers: {
         "Content-Type":"application/json",

@@ -1,10 +1,9 @@
-const DevURL = "http://localhost:3000/api";
-const ProductionURL = "https://capstone-4-vk50.onrender.com/api"
+import ENDPOINT from "./endpoint";
 
 export async function fetchInstruments() {
   try {
 
-    const response = await fetch(DevURL + "/instruments", {
+    const response = await fetch(ENDPOINT + "/instruments", {
       method: "GET",
       headers: {
         "Content-Type":"application/json"
@@ -21,7 +20,7 @@ export async function fetchInstruments() {
 
 export async function getInstrumentById(id) {
   try {
-    const response = await fetch(DevURL + `/instruments/${id}`, {
+    const response = await fetch(ENDPOINT + `/instruments/${id}`, {
       method: "GET",
       headers: {
         "Content-Type":"application/json"
